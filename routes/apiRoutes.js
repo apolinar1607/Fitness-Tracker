@@ -3,18 +3,10 @@ const db = require("../models");
 module.exports = function (app) {
     //retrieve all records
     app.get("/api/workouts", (req, res) => {
-        db.Workout.find()
-            .then(data => {
-                console.log(data);
-                res.json(data)
-            })
-            .catch(({ message }) => {
-                res.json(message);
-            })
-    });
-    //retrieve all workouts in range
-    app.get("/api/workouts/range", (req, res) => {
-        db.Workout.find()
+        db.Workout.aggregate([{
+            $addFields: {totalDuration: {$sum: "$exercises.duration"}
+            }
+        }])
             .then(data => {
                 console.log(data);
                 res.json(data)
@@ -23,7 +15,21 @@ module.exports = function (app) {
                 res.json(message);
             });
     });
-    //only applicable if location search is undefined
+    //retrieve all workouts in range
+    app.get("/api/workouts/range", (req, res) => {
+        db.Workout.aggregate([{
+            $addFields: {totalDuration: {$sum: "$exercises.duration"}
+            }
+        }])
+            .then(data => {
+                console.log(data);
+                res.json(data)
+            })
+            .catch(({ message }) => {
+                res.json(message);
+            });
+    });
+    //POST/Create new entries
     app.post("/api/workouts", ({body}, res) => {
         db.Workout.create(body)
             .then(data => {
