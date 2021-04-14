@@ -46,7 +46,7 @@
 
   The repository for this application could be accessed using the following github link:
 
-  https://apolinar1607/Workout-Tracker
+  https://apolinar1607/Fitness-Tracker
 
   
   
