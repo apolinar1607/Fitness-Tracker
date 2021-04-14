@@ -41,12 +41,12 @@
   
   The application could be accessed using the following heroku link:
 
-  https://apolinar1607/Workout-Tracker
+  https://am-fitness-tracker1.herokuapp.com/
 
 
   The repository for this application could be accessed using the following github link:
 
-  https://am-fitness-tracker1.herokuapp.com/
+  https://apolinar1607/Workout-Tracker
 
   
   
